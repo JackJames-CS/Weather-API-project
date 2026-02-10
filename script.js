@@ -38,6 +38,9 @@ async function getWeatherData(city) {
 
 function displayWeatherInfo(data){
 
+    const existingError = card.querySelector(".errorDisplay");
+    if (existingError) existingError.remove();
+
     const {name: city, 
            main: {temp, humidity}, 
            weather: [{description, id}]} = data;
@@ -99,7 +102,7 @@ function displayError(message){
     errorDisplay.classList.add("errorDisplay");
 
     card.textContent = "";
-    card.style.display = "flex";
+    card.style.display = "block";
     card.appendChild(errorDisplay);
 
 }
